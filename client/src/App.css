@@ -1,0 +1,8 @@
+.App {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    max-height: 120vh;
+    background: linear-gradient(222.26deg, #1d4d60 1.22%, #04123e 106.28%);
+}
+

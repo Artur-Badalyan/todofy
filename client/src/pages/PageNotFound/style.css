@@ -1,0 +1,15 @@
+.page-not-found {
+    text-align: center;
+}
+
+.page-not-found > span {
+    color: #0e81ce96;
+    font-size: 250px;
+    font-weight: bold;
+}
+
+.page-not-found > p {
+    color: #d3d3d3;
+    font-size: 50px;
+    font-weight: bold;
+}

@@ -1,0 +1,74 @@
+
+.login-container {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.login-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+}
+
+.login-input {
+    margin-top: 6px;
+    min-width: 20em;
+    height: 70px;
+    padding: 0px 10px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    background-color: rgba(35, 42, 48, 0.82);
+    color: rgb(86, 179, 223);
+    border: none;
+    border-bottom: 2px solid rgb(86, 179, 223);
+    border-radius: 4px;
+    margin-bottom: 31px;
+    transition: all 250ms ease-in-out;
+}
+
+.login-input::placeholder {
+    color: rgb(86, 179, 223);
+}
+
+.login-input:hover {
+    background-color: rgba(94, 94, 94, 0.94);
+}
+
+.login-input:focus {
+    background-color: rgba(94, 94, 94, 0.94);
+    outline: none;
+}
+
+.login-form-response {
+    width: 80%;
+    text-align: center;
+    color: #d5d5d5;
+}
+
+.submit-login {
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 10px 30px;
+    background-color: rgb(86, 179, 223);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-login:hover {
+    color: rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 0px 16px 12px rgba(52, 152, 219, 0.09);
+    box-shadow: 0px 0px 16px 12px rgba(52, 152, 219, 0.09);
+    transition: 0.3s;
+}
