@@ -3,9 +3,11 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase/app";
 import "firebase/auth";
 import {useHistory} from "react-router-dom";
+
+import userServices from 'services/user';
+
 import {setLoginDate, setToken} from '../../utils/cookies'
 import {apiEndpoints, HEADERS} from "../../utils/constants";
-import userServices from 'services/user'
 import './style.css'
 
 firebase.initializeApp({

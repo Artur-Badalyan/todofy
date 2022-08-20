@@ -84,7 +84,6 @@ const encryptPass = async (req, res, next) => {
 // middlewares for /login
 
 const checkEmpty = (req, res, next) => {
-    console.log('\n\n\n 1111111111111')
     User.findAll().then((data) => {
         if (data.length === 0) {
             res.status(401).end(JSON.stringify(

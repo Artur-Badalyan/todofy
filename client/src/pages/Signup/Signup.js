@@ -1,43 +1,34 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
+
+import userServices from 'services/user';
+
 import {apiEndpoints, HEADERS} from "../../utils/constants";
 import SignupModal from '../../components/Modal/SignupModal'
 import './style.css'
 
 const Signup = () => {
-    const {push} = useHistory();
+    const history = useHistory();
     const [userName, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [value, setValue] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
-    const submit = (event) => {
+    const submit = async (event) => {
         event.preventDefault();
-        fetch(apiEndpoints.SIGNUP, {
-            method: 'POST',
-            headers: HEADERS,
-            body: JSON.stringify({
-                userName: userName,
-                email: email,
-                password: password
-            })
-        }).then(res => {
-            if (res.status === 200) {
-                setIsOpen(true)
-            } else {
-                res.json().then(body => {
-                    setValue(body.status)
-                })
-            }
-        }).catch(err => {
-            return err
-        })
+        const response = await userServices.signup({
+            userName: userName,
+            email: email,
+            password: password
+        });
+
+        console.log('response = ',response)
     }
 
     const signupModalOk = () => {
         setIsOpen(false);
-        push('/login');
+        history.push('/login');
     }
 
     return (

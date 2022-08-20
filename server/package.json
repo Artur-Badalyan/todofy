@@ -1,33 +1,46 @@
 {
-  "name": "login_registration",
+  "name": "node_sequilize",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "debug": "nodemon --inspect app.js",
-    "start": "nodemon app.js",
-    "lint": "eslint ./ --fix"
+    "debug": "NODE_ENV=development nodemon app/bin/index.js",
+    "start": "NODE_ENV=development nodemon app/bin/index.js",
+    "migrate-start": "sequelize db:migrate --env development && NODE_ENV=development node server",
+    "migrate": "npx sequelize db:migrate",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ajv": "^7.0.3",
+    "ajv-formats": "^1.5.1",
+    "ajv-keywords": "^4.0.0",
+    "app-module-path": "^2.2.0",
     "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "firebase-admin": "^9.11.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
+    "jwt-decode": "^3.1.2",
     "mysql2": "^2.2.5",
+    "node-schedule": "^2.1.0",
+    "nodemailer": "^6.7.3",
+    "path": "^0.12.7",
     "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0",
-    "swagger-ui-express": "^4.1.6"
+    "umzug": "^2.3.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.12",
-    "eslint": "^7.31.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-node": "^11.1.0",
-    "nodemon": "^2.0.12"
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0"
   }
 }
