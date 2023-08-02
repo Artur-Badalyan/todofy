@@ -5,6 +5,7 @@ const { dbSettings } = require('settings');
 const basename = path.basename(__filename);
 const db = {};
 
+console.log('\n\n\n dbSettings = ',dbSettings);
 
 const sequelize = new Sequelize(
 	dbSettings.database,

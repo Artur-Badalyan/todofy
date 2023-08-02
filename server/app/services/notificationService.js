@@ -27,7 +27,7 @@ class NotificationService {
                     webpush: {
                         notification: {
                             ...message.notification,
-                            requireInteraction: message.requireInteraction || false,
+                            requireInteraction: message.requireInteraction ?? false,
                             actions: [{ title: 'Open', action: 'open' }],
                             data: { link: message.link },
                         },

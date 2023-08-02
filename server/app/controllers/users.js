@@ -6,6 +6,7 @@ const responseBuilder = require('helpers/errorResponseBodyBuilder');
 const {CONSTANTS} = require('constants/Constants');
 
 module.exports.getUsers = async (req, res) => {
+    console.log('\n\n\n 111111111111111');
     return Users.findAndCountAll({include: [{model: Tasks}]})
         .then(({ count, rows }) => {
             return res.json({ count, data: rows });
@@ -20,6 +21,8 @@ module.exports.getUsers = async (req, res) => {
 };
 
 module.exports.getUser = async (req, res) => {
+    console.log('\n\n\n 111111111111111 ',req.params);
+
     return Users.findPk(req.params.id)
         .then((user) => {
             return res.json(user);

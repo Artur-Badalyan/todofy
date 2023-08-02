@@ -3,11 +3,11 @@ const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const cors = require("cors");
 const routes = require('./app/routes');
-const worker = require('./app/services/worker');
+// const worker = require('./app/services/worker');
 
 const app = express();
 
-worker.start();
+// worker.start();
 app.use(cors());
 
 // parse requests of content-type - application/json

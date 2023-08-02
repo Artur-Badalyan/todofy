@@ -5,17 +5,22 @@ const safeJsonParser = (params) => {
         let { limit, skip: offset, sort, filter, search } = JSON.parse(params);
         return { limit, offset, sort, filter, search }
     } catch (err) {
+        console.log('\n\n\n err = ',err)
         return { limit: null, offset: null, sort: null, filter: null, search: null }
     }
 }
 
 module.exports.getListPayload = (req) => {
     const params = req.query.params;
+    console.log('\n\n\n params = ',params)
+
     let res = { distinct: true };
     res.where = {};
-
     if (params) {
+
         let { limit, offset, sort, filter, search } = safeJsonParser(params);
+        console.log('\n\n filter',filter)
+
         if (limit) {
             res.limit = parseInt(limit);
         }

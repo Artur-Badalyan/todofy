@@ -1,0 +1,6 @@
+{
+  "login": "/auth/login",
+  "users": "/users",
+  "user": "/users/:id",
+  "tasks": "/tasks"
+}

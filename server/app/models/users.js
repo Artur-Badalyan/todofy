@@ -70,13 +70,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             field: 'phone'
         },
-        role: {
-            // todo separate to another table
-            type: DataTypes.ENUM(CONSTANTS.UsersRoles),
-            validate: {
-                notEmpty: true
-            }
-        },
         passwordExpireDate: {
             type: 'TIMESTAMP',
             allowNull: false,

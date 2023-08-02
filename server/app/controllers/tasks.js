@@ -4,13 +4,14 @@ const { users: Users, tasks: Tasks, sequelize } = require('models');
 const { isSchemeValidSync } = require('helpers/validate');
 const { tasks: tasksValidator } = require('schemes');
 const {CONSTANTS} = require('constants/Constants');
-const notificationService = require('services/notificationService');
+// const notificationService = require('services/notificationService');
 const { getListPayload } = require('./common');
 
 module.exports.getAllTasks = async (req, res) => {
     try {
         let payload = getListPayload(req);
         payload.include = [{ model: Users }];
+        console.log('\n\n\n payload = ',payload)
         const { count, rows } = await Tasks.findAndCountAll(payload);
         return res.json({ count: count, data: rows });
     } catch(err) {
@@ -61,7 +62,7 @@ module.exports.create = async (req, res) => {
             body: ` Hi ${user.firstName || user.nickName}. Created new todo.\n { ID: ${createdTask.id}, NAME: ${createdTask.name} }`
         };
         await transaction.commit();
-        notificationService.sendFCMNotification(messagePayload.title, messagePayload.body, firebaseToken, req.user.id);
+        // notificationService.sendFCMNotification(messagePayload.title, messagePayload.body, firebaseToken, req.user.id);
         return res.status(200).json({ task: createdTask, message: 'Task has been created.' });
     } catch(err) {
         if (transaction) {
@@ -119,7 +120,7 @@ const getTokenAndSendNotification = async (req) => {
             title: `Reminder`,
             body: ` Hi ${req.user.firstName || req.user.nickName}. You set up a reminder for a task {ID: ${req.params.id}}.`
         };
-        notificationService.sendFCMNotification(messagePayload.title, messagePayload.body, firebaseToken, req.user.id);
+        // notificationService.sendFCMNotification(messagePayload.title, messagePayload.body, firebaseToken, req.user.id);
     }
 }
 

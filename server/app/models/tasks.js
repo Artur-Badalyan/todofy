@@ -8,31 +8,36 @@ module.exports = (sequelize, DataTypes) => {
 			primaryKey: true,
 			type: DataTypes.INTEGER
 		},
-		name: {
+		title: {
 			type: DataTypes.STRING(255),
 			allowNull: true,
-			field: 'name'
+			field: 'title'
 		},
 		description: {
 			type: DataTypes.STRING(255),
 			allowNull: true,
 			field: 'description'
 		},
-		estimatedDate: {
+		date: {
 			type: DataTypes.DATE,
 			allowNull: true,
-			field: 'estimated_date'
+			field: 'date'
 		},
 		archived: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: false,
 			field: 'archived'
 		},
-		status: {
-			type: DataTypes.ENUM(CONSTANTS.TaskStatuses.list),
-			defaultValue: CONSTANTS.TaskStatuses.defaultValue,
-			field: 'status'
+		important: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
+			field: 'important'
 		},
+		completed: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
+			field: 'completed'
+		}
 	};
 
 	const definition = {
@@ -46,6 +51,15 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: {
 				name: 'userId',
 				field: 'user_id',
+				allowNull: false
+			},
+			onUpdate: 'CASCADE',
+			onDelete: 'CASCADE'
+		});
+		tasks.belongsTo(db.directories, {
+			foreignKey: {
+				name: 'directories_id',
+				field: 'directories_id',
 				allowNull: false
 			},
 			onUpdate: 'CASCADE',

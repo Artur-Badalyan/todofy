@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 const { users: Users, tasks: Tasks } = require('../models');
-const notificationService = require('../services/notificationService');
+// const notificationService = require('../services/notificationService');
 
 const sendFCMMessage = async (user, task) => {
     try {
@@ -12,8 +12,8 @@ const sendFCMMessage = async (user, task) => {
                 { ID: ${task.dataValues.id}, NAME: ${task.dataValues.name} }`,
         };
         if (firebaseToken) {
-            const res = await notificationService.sendFCMNotification(payload.title, payload.body, firebaseToken, user.dataValues.id);
-            return res;
+            // const res = await notificationService.sendFCMNotification(payload.title, payload.body, firebaseToken, user.dataValues.id);
+            // return res;
         }
     } catch (error) {
         console.error('sendFCMNotification error...\n', error);
