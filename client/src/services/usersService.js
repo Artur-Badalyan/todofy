@@ -9,5 +9,17 @@ export default {
   getUser: async (id) => {
     const options = { url: apiEndpoints.user.replace(':id', id)};
     return get(options);
+  },
+  login: async (params) => {
+    const options = { url: apiEndpoints.login, params: {...params} };
+    return get(options);
+  },
+  logout: async (params) => {
+    const options = { url: apiEndpoints.login, params: {...params} };
+    return get(options);
+  },
+  registrate: async (params) => {
+    const options = { url: apiEndpoints.login, params: {...params} };
+    return get(options);
   }
 }

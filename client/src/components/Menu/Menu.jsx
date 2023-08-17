@@ -14,15 +14,18 @@ const Menu = () => {
     const closeMenuHandler = () => {
         dispatch(menusActions.closeMenuHeader());
     };
+
+    // console.log("=======menuOpen==========", menuOpen);
+    // console.log("=========classLinkActive========");
     
     return (<LayoutMenus menuOpen={menuOpen} closeMenuHandler={closeMenuHandler} className="left-0">
       <header className="h-full flex flex-col">
         <h1 className="font-bold uppercase text-center mt-8 text-lg tracking-wide hidden xl:block">
           To-do list
         </h1>
-        <BtnAddTask className="my-8 mx-4"/>
+        <BtnAddTask dTask className="my-8 mx-4"/>
         <NavLinks classActive={classLinkActive}/>
-        <Directories classActive={classLinkActive}/>
+        {/* <Directories classActive={classLinkActive}/> */}
       </header>
     </LayoutMenus>);
 };

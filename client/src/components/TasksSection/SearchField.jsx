@@ -4,6 +4,7 @@ import { ReactComponent as Search } from "../../assets/search.svg";
 import useDate from "../hooks/useDate";
 import useSearchQuery from "../hooks/useSearchQuery";
 import useVisibility from "../hooks/useVisibility";
+
 const ItemSearch = ({ task }) => {
     const dateFormated = useDate(task.date);
     return (<li key={task.id} className="py-2">

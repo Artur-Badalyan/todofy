@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
 	directories.associate = (db) => {
 		directories.hasMany(db.tasks, {
 			foreignKey: {
-				name: 'directories_id',
-				field: 'directories_id',
-				allowNull: false
+				name: 'directory_id',
+				field: 'directory_id',
+				allowNull: true
 			},
 			onUpdate: 'CASCADE',
 			onDelete: 'CASCADE'

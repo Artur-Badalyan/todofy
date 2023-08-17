@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from "react";
+import PropTypes from 'prop-types';
 
 import TasksService from "services/tasksService";
 
@@ -10,30 +11,20 @@ import { tasksActions } from "../../store/Tasks.store";
 
 const DoneTasks = ({ done, title }) => {
     const dispatch = useAppDispatch();
+    const tasks = useAppSelector((state) => state.tasks.completedTasks);
 
-    const getAllTasks = useCallback(async() => {
-      try {
-        const payload = JSON.stringify({ filter: { completed: true } })
-        // const payload = { params: { filter: { completed: true }} }
-        const response = await TasksService.getAllTasks({ params: payload});
-        const data = await response.json();
-        dispatch(tasksActions.addNewTasks(data));
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error('Error fetching data:', error);
-      }
-    },[]);
 
-    useEffect(() => {
-        getAllTasks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
-    const tasks = useAppSelector((state) => state.tasks.tasks);
     const { tasks: tasksFiltered } = useCompletedTasks({ tasks, done });
     useDescriptionTitle("All tasks done", title);
     
     return <LayoutRoutes title={title} tasks={tasksFiltered} />;
+ 
 };
+
+DoneTasks.propTypes = {
+  done: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired
+}
 
 export default DoneTasks;

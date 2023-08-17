@@ -6,6 +6,9 @@ const Directories = ({ classActive }) => {
     const toggleDirectoriesOpen = () => {
         setIsDirectoriesOpen((prevState) => !prevState);
     };
+
+console.log("isDirectoriesOpen--->", isDirectoriesOpen);
+
     return (<div className="py-4">
       <button className={`flex items-center w-full mx-4 mb-2 ${isDirectoriesOpen ? "dark:text-slate-200" : ""}`} onClick={toggleDirectoriesOpen}>
         <Arrow className={`w-3 h-3 mr-2 rotate-90 transition ${isDirectoriesOpen ? "rotate-180" : ""}`}/>

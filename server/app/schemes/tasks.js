@@ -3,22 +3,29 @@
 module.exports = {
     updateTask: {
         properties: {
-            name: {type: 'string', maxLength: 255 },
-            description: {type: ['string', 'null'], maxLength: 255 },
-            status: {type: 'string', maxLength: 255 },
-            estimatedDate: {type: ['string', 'null'], maxLength: 255 },
+            title: { type: 'string', maxLength: 255 },
+            description: { type: 'string', maxLength: 255 },
+            date: { type: ['string', 'null'], maxLength: 255 },
+            completed: { type: 'boolean' },
+            important: { type: 'boolean' },
+            directoryId: { type: ['number', 'null'], maxLength: 10 },
+            userId: { type: 'number', maxLength: 10 },
+            isListInView1: { type: 'boolean' }
         },
         required: [],
         additionalProperties: false
     },
     createTask: {
         properties: {
-            name: { type: 'string', maxLength: 255 },
+            title: { type: 'string', maxLength: 255 },
             description: { type: 'string', maxLength: 255 },
-            estimatedDate: { type: ['string', 'null'], maxLength: 255 },
-            userId: { type: 'number', maxLength: 10 },
+            date: { type: ['string', 'null'], maxLength: 255 },
+            completed: { type: 'boolean' },
+            important: { type: 'boolean' },
+            directoryId: { type: ['number', 'null'], maxLength: 10 },
+            userId: { type: 'number', maxLength: 10 }
         },
-        required: ['name'],
+        required: ['title', 'date', 'userId'],
         additionalProperties: false
     },
     deleteTask: {

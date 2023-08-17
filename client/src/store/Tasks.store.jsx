@@ -1,11 +1,12 @@
-import { createSlice, } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+// import TasksService from 'services/tasksService';
 
 const defaultTasks = [
     {
         title: "Task 1",
         important: false,
         description: "This is the description for this task",
-        date: "2023-04-12",
+        date: "2023-08-08",
         dir: "Main",
         completed: true,
         id: "t1",
@@ -57,8 +58,23 @@ const getSavedDirectories = () => {
     return dirList;
 };
 
+// const fetchTasksList = async () => {
+//     try {
+//         console.log("----aaaaaaaaaaaaa------");
+//         const payload = JSON.stringify({ filter: { completed: true } })
+//         const response = await TasksService.getTasksList({ params: payload });
+//         return response;
+//     } catch (error) {
+//         console.error('Error fetching data:', error);
+//     }
+//     return false;
+// };
+
+
 const initialState = {
     tasks: [],
+    importantTasks: [],
+    completedTasks: [],
     directories: getSavedDirectories(),
 };
 
@@ -66,19 +82,28 @@ const tasksSlice = createSlice({
     name: "tasks",
     initialState: initialState,
     reducers: {
-        addNewTasks(state, action) {
-            state.tasks = [...action.payload, ...state.tasks];
+        addTasksList(state, action) {
+            state.tasks = [...action.payload];
         },
-        // addNewTask(state, action) {
-        //     state.tasks = [action.payload, ...state.tasks];
-        // },
+        addImportantTasksList(state, action) {
+            state.importantTasks = [...action.payload];
+        },
+        addCompletedTasksList(state, action) {
+            state.completedTasks = [...action.payload];
+        },
+        addNewTask(state, action) {
+            console.log("------- action paylod ", action.payload);
+            console.log("------- state ", state);
+            state.tasks = [action.payload, ...state.tasks];
+        },
         removeTask(state, action) {
             const newTasksList = state.tasks.filter((task) => task.id !== action.payload);
             state.tasks = newTasksList;
         },
         markAsImportant(state, action) {
-            const newTaskFavorited = state.tasks.find((task) => task.id === action.payload);
-            newTaskFavorited.important = !newTaskFavorited.important;
+            const { id, important } = action.payload;
+            const newTaskFavorited = state.tasks.find((task) => task.id === id);
+            newTaskFavorited.important = important;
         },
         editTask(state, action) {
             const taskId = action.payload.id;
@@ -87,9 +112,9 @@ const tasksSlice = createSlice({
             state.tasks[indexTask] = action.payload;
         },
         toggleTaskCompleted(state, action) {
-            const taskId = action.payload;
-            const currTask = state.tasks.find((task) => task.id === taskId);
-            currTask.completed = !currTask.completed;
+            const { id, completed, isListInView1 } = action.payload;
+            const currTask = state.tasks.find((task) => task.id === id);
+            currTask.completed = !completed
         },
         deleteAllData(state) {
             state.tasks = [];
@@ -108,8 +133,8 @@ const tasksSlice = createSlice({
             state.tasks = state.tasks.filter((task) => task.dir !== dirName);
         },
         editDirectoryName(state, action) {
-            const newDirName = action.payload.newDirName;
-            const previousDirName = action.payload.previousDirName;
+            const { newDirName } = action.payload;
+            const { previousDirName } = action.payload;
             const directoryAlreadyExists = state.directories.includes(newDirName);
             if (directoryAlreadyExists)
                 return;
@@ -121,7 +146,25 @@ const tasksSlice = createSlice({
                 }
             });
         },
+        // getTasksList(state, action) {
+        //     const tasks = await fetchTasksList();
+        //     console.log('\n\n\n tasks', tasks);
+        //     state.tasks = [action.payload]
+        // }
     },
+    // extraReducers: (builder) => {
+    //     builder.addCase(fetchContent.pending, (state) => {
+    //       state.isLoading = true
+    //     })
+    //     builder.addCase(fetchContent.fulfilled, (state, action) => {
+    //       state.isLoading = false
+    //       state.contents = action.payload
+    //     })
+    //     builder.addCase(fetchContent.rejected, (state, action) => {
+    //       state.isLoading = false
+    //       state.error = action.error.message
+    //     })
+    //   },
 });
 
 export const tasksActions = tasksSlice.actions;

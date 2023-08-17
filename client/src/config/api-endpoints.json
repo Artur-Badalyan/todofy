@@ -1,6 +1,9 @@
 {
   "login": "/auth/login",
+  "logout": "/auth/logout",
+  "registrate": "/auth/registrate",
   "users": "/users",
   "user": "/users/:id",
-  "tasks": "/tasks"
+  "tasks": "/tasks",
+  "task": "/tasks/:id"
 }

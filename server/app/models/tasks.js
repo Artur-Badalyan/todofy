@@ -58,9 +58,9 @@ module.exports = (sequelize, DataTypes) => {
 		});
 		tasks.belongsTo(db.directories, {
 			foreignKey: {
-				name: 'directories_id',
-				field: 'directories_id',
-				allowNull: false
+				name: 'directory_id',
+				field: 'directory_id',
+				allowNull: true
 			},
 			onUpdate: 'CASCADE',
 			onDelete: 'CASCADE'

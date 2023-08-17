@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import useCompletedTasks from "../hooks/useCompletedTasks";
 import useTodayTasks from "../hooks/useTodayTasks";
+
 const TasksDone = () => {
     const todaysTasks = useTodayTasks();
     const tasks = useAppSelector((state) => state.tasks.tasks);
@@ -11,7 +12,7 @@ const TasksDone = () => {
         done: true,
     });
     const { tasks: allTasksDone } = useCompletedTasks({
-        tasks: tasks,
+        tasks,
         done: true,
     });
     const percentageTodayTasks = (todayTasksDone.length * 100) / todaysTasks.length;
@@ -25,7 +26,7 @@ const TasksDone = () => {
             {todaysTasks.length}
           </span>
           <div className="barProgress">
-            <div style={{ width: percentageTodayTasks + "%" }}></div>
+            <div style={{ width: `${percentageTodayTasks  }%` }} />
           </div>
         </div>)}
       {tasks.length !== 0 && (<div className="mt-6">
@@ -33,7 +34,7 @@ const TasksDone = () => {
             <span>All tasks </span> {allTasksDone.length}/{tasks.length}
           </span>
           <div className="barProgress">
-            <div style={{ width: percentageAllTasks + "%" }}></div>
+            <div style={{ width: `${percentageAllTasks  }%` }} />
           </div>
         </div>)}
 
@@ -42,7 +43,7 @@ const TasksDone = () => {
         </span>)}
 
       {todaysTasks.length > 0 && (<div className="mt-8">
-          <span className="mb-2 block">Today's tasks</span>
+          <span className="mb-2 block">Today&apos;s tasks</span>
           <ul>
             {todaysTasksToShow.map((task) => (<li key={task.id} className="py-2 pl-6 text-slate-200 list-item">
                 <span>{task.title}</span>

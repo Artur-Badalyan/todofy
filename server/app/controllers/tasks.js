@@ -48,14 +48,16 @@ module.exports.getTask = async (req, res) => {
 module.exports.create = async (req, res) => {
     let transaction;
     try {
-        const payload = { ...req.body, userId: req.user.id };
+        const payload = { ...req.body, userId: 1 }; //req.user.id
         const { isValid, errors, data: taskData } = isSchemeValidSync(tasksValidator.createTask, payload);
         if (!isValid) {
             return res.status(400).json({ message: 'Validation failed.', errors });
         }
         transaction = await sequelize.transaction();
+        console.log('\n\n\n taskData = ',taskData)
         const createdTask = await Tasks.create(taskData, { transaction });
-        const user = await Users.findByPk(req.user.id);
+        console.log('\n\n\n createdTask ',createdTask);
+        const user = await Users.findByPk(payload.userId);
         const firebaseToken = user.firebaseToken;
         const messagePayload = {
             title: `Created Todo.`,
@@ -65,6 +67,8 @@ module.exports.create = async (req, res) => {
         // notificationService.sendFCMNotification(messagePayload.title, messagePayload.body, firebaseToken, req.user.id);
         return res.status(200).json({ task: createdTask, message: 'Task has been created.' });
     } catch(err) {
+        console.log('\n\n\n err !!!!!!!!',err);
+
         if (transaction) {
             transaction.rollback();
         }
@@ -81,8 +85,8 @@ module.exports.update = async (req, res) => {
         if (!isValid) {
             return res.status(400).json({ message: 'Validation failed.', errors });
         }
-        const apiPayload = { where: { id: req.params.id } };
-        const result = await Tasks.update(taskData, apiPayload);
+
+        const result = await Tasks.update(taskData, { where: { id: req.params.id } });
         if (!result[0]) {
             return res.status(400).json({ message: 'Task not found' });
         }

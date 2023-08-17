@@ -1,13 +1,28 @@
 import React, { useState } from "react";
+import { useSnackbar } from "notistack";
 import { useAppDispatch } from "../../../store/hooks";
 import { tasksActions } from "../../../store/Tasks.store";
 import ModalConfirm from "../../Utilities/ModalConfirm";
 import { ReactComponent as Trash } from "../../../assets/trash.svg";
+import tasksService from "services/tasksService";
+
 const BtnDeleteTask = ({ taskId }) => {
+  const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
     const [showModal, setIsModalShown] = useState(false);
-    const dispatch = useAppDispatch();
-    const removeTaskHandler = () => {
-        dispatch(tasksActions.removeTask(taskId));
+
+    const removeTaskHandler = async() => {
+      try {
+        console.log("---------------------delete id ", taskId);
+        const response = await tasksService.deleteTask(taskId);
+        // if (response) {
+        //   dispatch(tasksActions.removeTask(taskId));
+        //   enqueueSnackbar('Task successfully deleted', { variant: 'success' });
+        // }
+      } catch (error) {
+        enqueueSnackbar('Error fetching data:', { variant: 'error' });
+      }
+
     };
     return (<>
       {showModal && (<ModalConfirm onClose={() => setIsModalShown(false)} text="This task will be deleted permanently." onConfirm={removeTaskHandler}/>)}
@@ -16,4 +31,5 @@ const BtnDeleteTask = ({ taskId }) => {
       </button>
     </>);
 };
+
 export default React.memo(BtnDeleteTask);
