@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactComponent as Calendar } from "../../../assets/date.svg";
 import useDate from "../../hooks/useDate";
+
 const InfosTask = ({ task, isListInView1, }) => {
     const dateFormated = useDate(task.date);
     return (<div className={`flex flex-col flex-1 ${isListInView1 ? "mr-6" : ""}`}>

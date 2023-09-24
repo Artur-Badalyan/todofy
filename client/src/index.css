@@ -14,15 +14,27 @@
   @apply scale-95;
 }
 
+.green {
+  background-color: #00C9A7;
+}
+
+.green:hover {
+  background-color: #00c0a0;
+}
+
+.greenColor {
+  color: #00C9A7;
+}
+
 @layer components {
   .tasksList > li:first-of-type article {
-    @apply bg-violet-600 text-slate-100 dark:bg-violet-800;
+    @apply green text-slate-100 dark:bg-violet-800;
   }
   .tasksList > li:first-of-type article .description {
-    @apply text-violet-300;
+    @apply text-slate-50;
   }
   .tasksList > li:first-of-type article > div {
-    @apply border-violet-500 dark:border-violet-700;
+    @apply border-slate-50 dark:border-violet-700;
   }
   .listView1 article {
     @apply h-40;
@@ -54,7 +66,7 @@
     @apply bg-slate-200 w-full h-2 rounded-full overflow-hidden dark:bg-slate-700/[.3];
   }
   .barProgress > div {
-    @apply bg-violet-600 h-full;
+    @apply green h-full dark:bg-violet-700;
   }
   .itemDirectory > .buttonsDir {
     @apply xl:opacity-0 transition opacity-100;

@@ -44,14 +44,14 @@ const HeaderTasks = () => {
       </button>
       <SearchField />
       <div className="text-center">
-        <span className="text-slate-600 dark:text-slate-200 uppercase font-bold text-sm block xl:hidden">
-          To-do list
+        <span className="text-slate-600 dark:text-slate-200 font-bold text-lg block xl:hidden">
+          TodoFy
         </span>
         <time dateTime={dateTimeFormat}>{todayDate}</time>
       </div>
       <div className="flex flex-1">
         <Notification />
-        <BtnAddTask className="sm:static fixed bottom-3 right-3 z-10 sm:z-0 min-w-max shadow-lg shadow-slate-400  dark:shadow-slate-900 sm:shadow-transparent"/>
+        <BtnAddTask className="sm:static fixed bottom-3 right-3 z-10 sm:z-0 min-w-max green hover:green shadow-lg dark:shadow-slate-900 sm:shadow-transparent"/>
 
         <button onClick={openMenuAccountHandler} className="block xl:hidden">
           <img src={avatar1} alt="cat" className="w-10 h-10 rounded-full ml-4"/>

@@ -26,9 +26,9 @@ const NavLinks = ({ classActive }) => {
     const route = useLocation();
     const currentPath = route.pathname;
     return (<nav>
-      <ul className="grid gap-2">
+      <ul className="grid gap-2 mt-5">
         {links.map((link) => (<li key={link.path}>
-            <NavLink to={link.path} className={`px-4 py-2 w-full block transition hover:text-rose-600 dark:hover:text-slate-200 ${currentPath === link.path ? classActive : ""}`}>
+            <NavLink to={link.path} className={`px-4 py-2 w-full block transition hover:text-emerald-500 dark:hover:text-slate-200 ${currentPath === link.path ? classActive : ""}`}>
               {link.name}
             </NavLink>
           </li>))}

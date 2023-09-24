@@ -23,8 +23,8 @@ const AccountData = () => {
 
         <TasksDone />
         <DeleteTasks />
-        <a href="https://github.com/aridsm" className="mt-4 bg-rose-100 p-2 rounded-md text-rose-600 text-center transition hover:bg-rose-200 dark:bg-slate-700/[.3] dark:text-slate-200">
-          Projected by Ariane Morelato
+        <a href="https://github.com/artur-badalyan" className="mt-4 bg-rose-100 p-2 rounded-md text-rose-600 text-center transition hover:bg-rose-200 dark:bg-slate-700/[.3] dark:text-slate-200">
+          Projected by Artur Badalyan
         </a>
       </section>
     </LayoutMenus>);
