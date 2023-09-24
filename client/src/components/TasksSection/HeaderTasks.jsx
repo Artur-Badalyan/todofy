@@ -6,7 +6,6 @@ import SearchField from "./SearchField";
 import { useAppDispatch } from "../../store/hooks";
 import { menusActions } from "../../store/Menu.store";
 import Notification from "./Notification";
-
 const HeaderTasks = () => {
     const dispatch = useAppDispatch();
     const date = new Date();
@@ -39,7 +38,6 @@ const HeaderTasks = () => {
     const openMenuAccountHandler = () => {
         dispatch(menusActions.openMenuAccount());
     };
-    
     return (<header className="items-center grid grid-cols-[1fr_auto_1fr] gap-4 md:gap-0 md:flex ">
       <button className="mr-6 block xl:hidden" onClick={openMenuHeaderHandler} title="open menu">
         <MenuIcon />
@@ -61,5 +59,4 @@ const HeaderTasks = () => {
       </div>
     </header>);
 };
-
 export default HeaderTasks;

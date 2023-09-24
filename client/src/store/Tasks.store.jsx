@@ -1,5 +1,4 @@
 import { createSlice, } from "@reduxjs/toolkit";
-
 const defaultTasks = [
     {
         title: "Task 1",
@@ -29,7 +28,6 @@ const defaultTasks = [
         id: "t3",
     },
 ];
-
 const getSavedDirectories = () => {
     let dirList = [];
     if (localStorage.getItem("directories")) {
@@ -56,22 +54,19 @@ const getSavedDirectories = () => {
     }
     return dirList;
 };
-
 const initialState = {
-    tasks: [],
+    tasks: localStorage.getItem("tasks")
+        ? JSON.parse(localStorage.getItem("tasks"))
+        : defaultTasks,
     directories: getSavedDirectories(),
 };
-
 const tasksSlice = createSlice({
     name: "tasks",
     initialState: initialState,
     reducers: {
-        addNewTasks(state, action) {
-            state.tasks = [...action.payload, ...state.tasks];
+        addNewTask(state, action) {
+            state.tasks = [action.payload, ...state.tasks];
         },
-        // addNewTask(state, action) {
-        //     state.tasks = [action.payload, ...state.tasks];
-        // },
         removeTask(state, action) {
             const newTasksList = state.tasks.filter((task) => task.id !== action.payload);
             state.tasks = newTasksList;
@@ -123,18 +118,14 @@ const tasksSlice = createSlice({
         },
     },
 });
-
 export const tasksActions = tasksSlice.actions;
-
 export default tasksSlice.reducer;
-
 export const tasksMiddleware = (store) => (next) => (action) => {
     const nextAction = next(action);
     const actionChangeOnlyDirectories = tasksActions.createDirectory.match(action);
     const isADirectoryAction = action.type
         .toLowerCase()
         .includes("directory");
-
     if (action.type.startsWith("tasks/") && !actionChangeOnlyDirectories) {
         const tasksList = store.getState().tasks.tasks;
         localStorage.setItem("tasks", JSON.stringify(tasksList));

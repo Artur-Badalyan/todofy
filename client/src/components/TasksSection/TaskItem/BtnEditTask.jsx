@@ -3,7 +3,6 @@ import { useAppDispatch } from "../../../store/hooks";
 import { tasksActions } from "../../../store/Tasks.store";
 import ModalCreateTask from "../../Utilities/ModalTask";
 import { ReactComponent as OptionsSvg } from "../../../assets/options.svg";
-
 const BtnEditTask = ({ task }) => {
     const [modalEditTaskOpen, setModalEditTaskOpen] = useState(false);
     const dispatch = useAppDispatch();
@@ -23,5 +22,4 @@ const BtnEditTask = ({ task }) => {
       {modalEditTaskOpen && (<ModalCreateTask onClose={closeModalEditTask} task={task} nameForm="Edit task" onConfirm={editTaskHandler}/>)}
     </>);
 };
-
 export default BtnEditTask;

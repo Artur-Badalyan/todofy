@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 const useSortTasks = (tasks) => {
     const [sortedBy, setSortedBy] = useState("");
     const [sortedTasks, setSortedTasks] = useState(tasks);
@@ -57,5 +56,4 @@ const useSortTasks = (tasks) => {
     }, [sortedBy, tasks]);
     return { sortedBy, setSortedBy, sortedTasks };
 };
-
 export default useSortTasks;

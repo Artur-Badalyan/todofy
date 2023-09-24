@@ -3,7 +3,6 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import useDescriptionTitle from "../hooks/useDescriptionTitle";
 import useSearchQuery from "../hooks/useSearchQuery";
 import LayoutRoutes from "../Utilities/LayoutRoutes";
-
 const SearchResults = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
@@ -23,5 +22,4 @@ const SearchResults = () => {
     useDescriptionTitle(title, title);
     return <LayoutRoutes title={title} tasks={matchedTasks}></LayoutRoutes>;
 };
-
 export default SearchResults;

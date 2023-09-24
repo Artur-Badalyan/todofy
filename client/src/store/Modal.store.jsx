@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
     modalCreateTaskOpen: false,
 };
-
 const modalSlice = createSlice({
     name: "modal",
     initialState: initialState,
@@ -16,6 +14,5 @@ const modalSlice = createSlice({
         },
     },
 });
-
 export const modalActions = modalSlice.actions;
 export default modalSlice.reducer;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/hooks";
-
 const useSearchQuery = (searchQuery) => {
     const tasks = useAppSelector((state) => state.tasks.tasks);
     const [matchedTasks, setMatchedTasks] = useState([]);
@@ -17,5 +16,4 @@ const useSearchQuery = (searchQuery) => {
     }, [searchQuery, tasks]);
     return matchedTasks;
 };
-
 export default useSearchQuery;

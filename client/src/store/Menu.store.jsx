@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
     menuHeaderOpened: false,
     menuAccountOpened: false,
 };
-
 const menusSlice = createSlice({
     name: "modal",
     initialState: initialState,
@@ -20,10 +18,8 @@ const menusSlice = createSlice({
         },
         closeMenuAccount(state) {
             state.menuAccountOpened = false;
-        }
+        },
     },
 });
-
 export const menusActions = menusSlice.actions;
-
 export default menusSlice.reducer;

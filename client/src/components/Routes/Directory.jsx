@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import useDescriptionTitle from "../hooks/useDescriptionTitle";
 import LayoutRoutes from "../Utilities/LayoutRoutes";
-
 const Directory = () => {
     const tasks = useAppSelector((state) => state.tasks.tasks);
     const directories = useAppSelector((state) => state.tasks.directories);
@@ -21,5 +20,4 @@ const Directory = () => {
     }, [directories, navigate, params.dir, tasks]);
     return (<LayoutRoutes title={`${params.dir}'s tasks`} tasks={tasksInCurrentDirectory}/>);
 };
-
 export default Directory;

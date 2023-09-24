@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAppSelector } from "../../store/hooks";
 import Modal from "./Modal";
-
 const InputCheckbox = ({ isChecked, setChecked, label }) => {
     return (<label className="mb-0 flex items-center cursor-pointer">
       <div className="mr-2 bg-slate-300/[.5] dark:bg-slate-800 w-5 h-5 rounded-full grid place-items-center border border-slate-300 dark:border-slate-700">
@@ -11,7 +10,6 @@ const InputCheckbox = ({ isChecked, setChecked, label }) => {
       <input type="checkbox" className="sr-only" checked={isChecked} onChange={() => setChecked((prev) => !prev)}/>
     </label>);
 };
-
 const ModalCreateTask = ({ onClose, task, nameForm, onConfirm }) => {
     const directories = useAppSelector((state) => state.tasks.directories);
     const today = new Date();
@@ -26,16 +24,45 @@ const ModalCreateTask = ({ onClose, task, nameForm, onConfirm }) => {
     }
     const todayDate = year + "-" + month + "-" + day;
     const maxDate = year + 1 + "-" + month + "-" + day;
-    const [description, setDescription] = useState(() => task ? task.description : '');
-    const [title, setTitle] = useState(() => task ? task.title : '');
-    const [date, setDate] = useState(() => task ? task.date : '');
+    const [description, setDescription] = useState(() => {
+        if (task) {
+            return task.description;
+        }
+        return "";
+    });
+    const [title, setTitle] = useState(() => {
+        if (task) {
+            return task.title;
+        }
+        return "";
+    });
+    const [date, setDate] = useState(() => {
+        if (task) {
+            return task.date;
+        }
+        return todayDate;
+    });
     const isTitleValid = useRef(false);
     const isDateValid = useRef(false);
-    const [isImportant, setIsImportant] = useState(() => task ? task.important : false);
-    const [isCompleted, setIsCompleted] = useState(() => task ? task.completed: false);
-    const [selectedDirectory, setSelectedDirectory] = useState(() => task ? task.dir : directories[0]);
-
-    const addNewTaskHandler = async (event) => {
+    const [isImportant, setIsImportant] = useState(() => {
+        if (task) {
+            return task.important;
+        }
+        return false;
+    });
+    const [isCompleted, setIsCompleted] = useState(() => {
+        if (task) {
+            return task.completed;
+        }
+        return false;
+    });
+    const [selectedDirectory, setSelectedDirectory] = useState(() => {
+        if (task) {
+            return task.dir;
+        }
+        return directories[0];
+    });
+    const addNewTaskHandler = (event) => {
         event.preventDefault();
         isTitleValid.current = title.trim().length > 0;
         isDateValid.current = date.trim().length > 0;
@@ -49,11 +76,10 @@ const ModalCreateTask = ({ onClose, task, nameForm, onConfirm }) => {
                 important: isImportant,
                 id: task?.id ? task.id : Date.now().toString(),
             };
-            await onConfirm(newTask);
+            onConfirm(newTask);
             onClose();
         }
     };
-
     return (<Modal onClose={onClose} title={nameForm}>
       <form className="flex flex-col stylesInputsField" onSubmit={addNewTaskHandler}>
         <label>
@@ -84,5 +110,4 @@ const ModalCreateTask = ({ onClose, task, nameForm, onConfirm }) => {
       </form>
     </Modal>);
 };
-
 export default ModalCreateTask;

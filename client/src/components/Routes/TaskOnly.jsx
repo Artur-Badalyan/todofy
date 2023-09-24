@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import useDescriptionTitle from "../hooks/useDescriptionTitle";
 import LayoutRoutes from "../Utilities/LayoutRoutes";
-
 const TaskOnly = () => {
     const params = useParams();
     const navigate = useNavigate();
@@ -21,5 +20,4 @@ const TaskOnly = () => {
     useDescriptionTitle(`Searching for ${title}`, "Task " + title);
     return <LayoutRoutes title={title} tasks={matchedTask}/>;
 };
-
 export default TaskOnly;

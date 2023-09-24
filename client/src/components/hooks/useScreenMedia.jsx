@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 const useScreenMedia = () => {
     const [mediaQueries, setMediaQueries] = useState({
         sm: false,
@@ -42,5 +41,4 @@ const useScreenMedia = () => {
     }, []);
     return mediaQueries;
 };
-
 export default useScreenMedia;

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 const useDescriptionTitle = (description, title) => {
     useEffect(() => {
         const metaDescription = document.querySelector('meta[name="description"]');
@@ -8,5 +7,4 @@ const useDescriptionTitle = (description, title) => {
         titleElement.innerText = "To-Do List | " + title;
     }, [description, title]);
 };
-
 export default useDescriptionTitle;
