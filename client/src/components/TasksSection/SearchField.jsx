@@ -4,6 +4,7 @@ import { ReactComponent as Search } from "../../assets/search.svg";
 import useDate from "../hooks/useDate";
 import useSearchQuery from "../hooks/useSearchQuery";
 import useVisibility from "../hooks/useVisibility";
+
 const ItemSearch = ({ task }) => {
     const dateFormated = useDate(task.date);
     return (<li key={task.id} className="py-2">
@@ -13,13 +14,17 @@ const ItemSearch = ({ task }) => {
       </Link>
     </li>);
 };
+
 const SearchField = () => {
     const navigate = useNavigate();
+
     const searchResultsRef = useRef(null);
     const [searchInputValue, setSearchInputValue] = useState("");
+
     const matchedTasks = useSearchQuery(searchInputValue);
     const tasks = matchedTasks.slice(0, 4);
     const { elementIsVisible: listResultsVisible, showElement: showListResults, closeElement: closeListResults, } = useVisibility([searchResultsRef.current], () => setSearchInputValue(""));
+
     const navigateToSearchResults = () => {
         navigate({
             pathname: "results",
@@ -28,6 +33,7 @@ const SearchField = () => {
             }).toString(),
         });
     };
+
     useEffect(() => {
         if (searchInputValue.trim().length > 0) {
             showListResults();
@@ -36,13 +42,23 @@ const SearchField = () => {
             closeListResults();
         }
     }, [closeListResults, searchInputValue, showListResults]);
-    return (<div className="flex-1 col-span-3 row-start-2 md:pr-10">
+
+    return (
+    <div className="flex-1 col-span-3 row-start-2 md:pr-10">
       <form className=" relative md:max-w-xs w-full" autoComplete="off">
         <label htmlFor="search" className="sr-only"></label>
-        <input type="search" id="search" placeholder="Search task" ref={searchResultsRef} onKeyUp={({ currentTarget }) => {
-            setSearchInputValue(currentTarget.value);
-        }} className="inputStyles w-full"/>
-        <Search className="absolute w-4 sm:w-5 right-4 top-3.5 text-slate-400"/>
+        <div class="flex justify-start items-center relative">
+          <input
+            id="search"
+            type="search"
+            placeholder="Search task"
+            ref={searchResultsRef}
+            onKeyUp={({ currentTarget }) => {
+              setSearchInputValue(currentTarget.value);
+            }}
+            className="inputStyles w-2/5 focus:w-full"
+          />
+        </div>
         {listResultsVisible && (<div className="absolute bg-slate-100 rounded-md w-full top-14 p-3 dark:bg-slate-800 z-10">
             {tasks.length ? (<>
                 <ul>

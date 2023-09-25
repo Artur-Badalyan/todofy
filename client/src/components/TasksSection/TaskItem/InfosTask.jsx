@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as Calendar } from "../../../assets/date.svg";
 import useDate from "../../hooks/useDate";
 
-const InfosTask = ({ task, isListInView1, }) => {
+const InfosTask = ({ task, isListInView1 }) => {
     const dateFormated = useDate(task.date);
     return (<div className={`flex flex-col flex-1 ${isListInView1 ? "mr-6" : ""}`}>
       <div className={`flex items-center justify-between ${isListInView1 ? "mb-1" : "mb-2"}`}>

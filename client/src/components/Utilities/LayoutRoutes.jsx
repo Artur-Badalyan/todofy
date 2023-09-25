@@ -4,6 +4,7 @@ import { modalActions } from "../../store/Modal.store";
 import useSortTasks from "../hooks/useSortTasks";
 import ButtonsSort from "../TasksSection/ButtonsSort";
 import TaskItem from "../TasksSection/TaskItem/TaskItem";
+
 const LayoutRoutes = ({ title, tasks }) => {
     const [isListInView1, setIsListInView1] = useState(false);
     const dispatch = useAppDispatch();
