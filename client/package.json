@@ -2,6 +2,7 @@
   "name": "tasks-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://artur-badalyan.github.io/todofy",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@tailwindcss/line-clamp": "^0.4.2",
@@ -22,8 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
