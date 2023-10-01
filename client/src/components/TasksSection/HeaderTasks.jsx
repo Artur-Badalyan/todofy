@@ -1,7 +1,7 @@
 import React from "react";
 import BtnAddTask from "../Utilities/BtnAddTask";
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
-import avatar1 from "../../assets/avatar-1.jpg";
+import avatar1 from "../../assets/avatar.svg";
 import SearchField from "./SearchField";
 import { useAppDispatch } from "../../store/hooks";
 import { menusActions } from "../../store/Menu.store";

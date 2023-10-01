@@ -47,7 +47,7 @@ const SearchField = () => {
     <div className="flex-1 col-span-3 row-start-2 md:pr-10">
       <form className=" relative md:max-w-xs w-full" autoComplete="off">
         <label htmlFor="search" className="sr-only"></label>
-        <div class="flex justify-start items-center relative">
+        <div className="flex justify-start items-center relative">
           <input
             id="search"
             type="search"

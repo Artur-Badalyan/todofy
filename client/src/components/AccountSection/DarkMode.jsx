@@ -27,11 +27,14 @@ const DarkMode = () => {
                 ?.setAttribute("content", "#e2e8f0");
         }
     }, [isCurrentDarkmode]);
-    return (<button className="mt-8 text-left flex items-center justify-between" onClick={toggleDarkMode}>
-      <span className="dark:text-slate-200">Darkmode</span>
-      <div className="w-10 h-5 bg-slate-200 rounded-full px-0.5 dark:bg-slate-700/[.3] relative flex items-center dark:justify-end">
-        <div className="w-4 h-4 rounded-full green absolute dark:bg-emerald-600"></div>
-      </div>
-    </button>);
+    return (
+        <div className="mt-8 text-left flex items-center justify-between" >
+            <span className="dark:text-slate-200">Darkmode</span>
+            <label className="switch">
+                <input type="checkbox" onClick={toggleDarkMode} />
+                <span className="slider"></span>
+            </label>
+        </div>
+    );
 };
 export default React.memo(DarkMode);

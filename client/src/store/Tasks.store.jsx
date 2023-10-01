@@ -1,31 +1,34 @@
 import { createSlice, } from "@reduxjs/toolkit";
 const defaultTasks = [
     {
+        id: "1",
         title: "Task 1",
-        important: false,
         description: "This is the description for this task",
         date: "2023-04-12",
         dir: "Main",
+        important: false,
         completed: true,
-        id: "t1",
+        alerted: false
     },
     {
+        id: "2",
         title: "Task 2",
-        important: true,
         description: "This is the description for this task",
         date: "2023-05-15",
         dir: "Main",
+        important: true,
         completed: true,
-        id: "t2",
+        alerted: false
     },
     {
+        id: "3",
         title: "Task 3",
-        important: false,
         description: "This is the description for this task",
         date: "2023-08-21",
         dir: "Main",
+        important: false,
         completed: false,
-        id: "t3",
+        alerted: false
     },
 ];
 const getSavedDirectories = () => {

@@ -25,4 +25,5 @@ const App = () => {
       <AccountData />
     </div>);
 };
+
 export default App;
