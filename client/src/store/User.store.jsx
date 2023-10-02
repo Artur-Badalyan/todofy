@@ -5,14 +5,15 @@ const defaultUser = {
     firstName: "Alex",
     lastName: "Smith",
     telegramCode: "",
+    telegramId: "",
+    chatId: "",
     isTelegramActive: false
 }
 
 const initialState = {
-    // user: localStorage.getItem("user")
-    //     ? JSON.parse(localStorage.getItem("user"))
-    //     : defaultUser
-    user: defaultUser
+    user: localStorage.getItem("user")
+        ? JSON.parse(localStorage.getItem("user"))
+        : defaultUser
 };
 
 const userSlice = createSlice({
@@ -31,7 +32,10 @@ const userSlice = createSlice({
         //     newTaskFavorited.important = !newTaskFavorited.important;
         // },
         editUser(state, action) {
-            state.user = action.payload;
+            state.user = {
+                ...state.user,
+                ...action.payload
+            };
         },
         // toggleTaskCompleted(state, action) {
         //     const taskId = action.payload;
@@ -51,6 +55,8 @@ export const userMiddleware = (store) => (next) => (action) => {
     if (action.type.startsWith("user/")) {
         const user = store.getState().user.user;
         localStorage.setItem("user", JSON.stringify(user));
+    } else if (!localStorage.getItem("user")) {
+        localStorage.setItem("user", JSON.stringify(defaultUser));
     }
 
  

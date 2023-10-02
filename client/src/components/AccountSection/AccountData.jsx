@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { menusActions } from "../../store/Menu.store";
 import LayoutMenus from "../Utilities/LayoutMenus";
 import DarkMode from "./DarkMode";
-import Telegram from "./Telegram";
 import DeleteTasks from "./DeleteTasks";
 import TasksDone from "./TasksDone";
 
@@ -26,7 +25,6 @@ const AccountData = () => {
         </div>
         <DarkMode />
         <TasksDone />
-        <Telegram  />
         <DeleteTasks />
       </section>
     </LayoutMenus>);
