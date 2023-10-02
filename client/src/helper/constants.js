@@ -1,4 +1,4 @@
 export default {
-    TELEGRAM_BOT_TOKEN: "5967992448:AAHRkzYxKa-s-skyvIo--99vnrKmwAT2wD4",
-    TELEGRAM_BOT_NAME: "todofy_bot"
+    TELEGRAM_BOT_TOKEN: "6557672150:AAGaVnvBN3CPbcGpubshziB18VVZSFjWBSI",
+    TELEGRAM_BOT_NAME: "todofy1_bot"
 }
