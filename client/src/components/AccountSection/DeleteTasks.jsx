@@ -18,4 +18,4 @@ const DeleteTasks = () => {
       </button>
     </>);
 };
-export default React.memo(DeleteTasks);
+export default DeleteTasks;

@@ -24,8 +24,10 @@ const AccountData = () => {
           </div>
         </div>
         <DarkMode />
-        <TasksDone />
-        <DeleteTasks />
+        <div className="h-full flex flex-col justify-between">
+          <TasksDone />
+          <DeleteTasks />
+        </div>
       </section>
     </LayoutMenus>);
 };

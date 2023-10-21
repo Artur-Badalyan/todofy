@@ -18,9 +18,9 @@ const TasksDone = () => {
     const percentageAllTasks = (allTasksDone.length * 100) / tasks.length;
     const todaysTasksToShow = todaysTasks.slice(0, 3);
     const showMore = todaysTasks.length > todaysTasksToShow.length;
-    return (<>
+    return (<div>
       {todaysTasks.length !== 0 && (<div className="mt-8">
-          <span className="flex justify-between mb-2">
+          <span className="flex justify-between mb-2 ">
             <span>Tasks today</span> {todayTasksDone.length}/
             {todaysTasks.length}
           </span>
@@ -44,7 +44,7 @@ const TasksDone = () => {
       {todaysTasks.length > 0 && (<div className="mt-8">
           <span className="mb-2 block">Today's tasks</span>
           <ul>
-            {todaysTasksToShow.map((task) => (<li key={task.id} className="py-2 pl-6 text-slate-200 list-item">
+            {todaysTasksToShow.map((task) => (<li key={task.id} className="py-2 pl-6 list-item">
                 <span>{task.title}</span>
               </li>))}
           </ul>
@@ -52,6 +52,6 @@ const TasksDone = () => {
               Show more
             </Link>)}
         </div>)}
-    </>);
+    </div>);
 };
 export default React.memo(TasksDone);
